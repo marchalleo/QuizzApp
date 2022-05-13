@@ -5,10 +5,13 @@ import { QuizzScreen } from '../screen/QuizzScreen';
 import { QuestionScreen } from '../screen/QuestionScreen';
 import { ResponseScreen } from '../screen/ResponseScreen';
 import { ScoreBoardScreen } from '../screen/ScoreBoardScreen';
+import { TeamContext } from '../context/context';
+import { useContext } from 'react';
 
 const Stack = createNativeStackNavigator();
 
 export function StackNavigator() {
+    const {team, setTeam} = useContext(TeamContext);
     return (
         <Stack.Navigator initialRouteName="Home">
             <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>

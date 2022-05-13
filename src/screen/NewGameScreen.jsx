@@ -1,27 +1,50 @@
 import { StyleSheet, Text, View, Button, TextInput, Pressable, Alert } from 'react-native';
 import { useState } from 'react';
-
+import { useContext } from 'react';
+import { TeamContext } from '../context/context';
 
 export function NewGameScreen({ navigation }) {
 
-  const [team, setTeam] = useState([]);
+  const {team, setTeam} = useContext(TeamContext);
+  //tableau qui regroupe les teams
 
   const [newTeam, setNewTeam] = useState('');
+  //valeur du input, de base string vide et quand submit on reset le input avec le string vide
 
   const [idTeam, setIdTeam] = useState(0);
+  //id de base à 0, qu'on implémente de 1 à chaque nouvelle team
 
   const submitNewTeam = () => {
       const myNewTeam = {
-        id: idTeam,
-        TeamName: newTeam
+        id: idTeam, //de base à 0 et implémenté de 1 pour chaque nouvelles teams
+        TeamName: newTeam //valeur de l'input
       }
-      if(newTeam !== ''){
-        setTeam([...team, myNewTeam]);
-        setNewTeam('');
-        setIdTeam(idTeam + 1);
+      if(newTeam !== ''){//si la valeur de l'input n'est pas vide
+        for (const element of team) {
+          if(element.TeamName === newTeam){//si un element dans le tableau à le même nom que celui inséré dans le input, on met une alert
+            return (
+              Alert.alert('Nom d\'équipe déja choisi')
+            )
+          }
+        }
+        setTeam([...team, myNewTeam]);//on insère la nouvelle team dans le tableau team avec les valeurs de myNewTeam 
+        setNewTeam('');//on reset l'input sur un string vide
+        setIdTeam(idTeam + 1);//on implémente de 1 l'id pour la prochaine team
       }else {
         Alert.alert('Champ vide', 'Veuillez renseigner un nom d\'équipe')
       }
+  }
+  const deleteTeam = (id) => {
+    setTeam(team.filter(team => team.id !== id));//on filtre l'id récupéré au clic pour l'enlever du tableau
+  }
+  const requiredTeam = () => {
+    if(team.length > 1){//si le tableau contient au moins 2 team
+      return(
+        navigation.navigate('Quizz')//on passe à la page suivante
+      )
+    }else {
+      Alert.alert('Nombre d\'équipe insufisante', 'créer minimum 2 équipes')
+    }
   }
 
     return (
@@ -43,7 +66,7 @@ export function NewGameScreen({ navigation }) {
               <Text style={styles.TextButton}>Ajouter</Text>
             </Pressable>
 
-            <Pressable style={styles.InpuButton} onPress={() => navigation.navigate('Quizz')}>
+            <Pressable style={styles.InpuButton} onPress={() => requiredTeam()}>
               <Text style={styles.TextButton}>Jouer</Text>
             </Pressable>
           </View>
@@ -51,11 +74,13 @@ export function NewGameScreen({ navigation }) {
         <View style={styles.ViewTeam}>
           { team.map(team => {
             return (
-              <View style={styles.teamCard} key={team.id}>
-                <Text style={styles.teamCardText}>{team.TeamName}{team.id}</Text>
+              <View style={styles.teamCard}  key={team.id}>
+                <View>
+                  <Text style={styles.teamCardText}>{team.TeamName}</Text>
+                </View>
+                <Pressable style={styles.teamCardDelete} onPress={() => deleteTeam(team.id)}><Text style={styles.teamCardDeleteText}>X</Text></Pressable>
               </View>
-            )
-          }) }
+          )} )}
         </View>
       </View>
     );
@@ -121,11 +146,23 @@ export function NewGameScreen({ navigation }) {
       width: '70%',
       height: '10%',
       backgroundColor: '#FF7F00',
-      justifyContent: 'center',
+      justifyContent: 'space-between',
       alignItems: 'center',
+      flexDirection: 'row',
       margin: 5,
+      paddingLeft: 20,
     },
     teamCardText: {
       fontSize: 22,
+    },
+    teamCardDelete: {
+      width: '20%',
+      height: '100%',
+      backgroundColor: 'red',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    teamCardDeleteText: {
+      fontSize: 25,
     },
   });

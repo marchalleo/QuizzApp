@@ -1,6 +1,10 @@
 import { StyleSheet, Text, View, Button, SafeAreaView } from 'react-native';
+import { TeamContext } from '../context/context';
+import { useContext } from 'react';
 
 export function QuizzScreen({ navigation }) {
+  const {team, setTeam} = useContext(TeamContext);
+
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Choisissez une question :</Text>
@@ -25,6 +29,15 @@ export function QuizzScreen({ navigation }) {
           title="Fin du jeu"
           onPress={() => navigation.navigate('Home')}
         />
+        <View>
+          { team.map(team => {
+            return (
+              <View key={team.id}>
+                <Text>{team.TeamName}</Text>
+              </View>
+            )
+          }) }
+        </View>
       </View>
     );
   }
