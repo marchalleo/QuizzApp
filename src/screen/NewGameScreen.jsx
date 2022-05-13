@@ -17,7 +17,8 @@ export function NewGameScreen({ navigation }) {
   const submitNewTeam = () => {
       const myNewTeam = {
         id: idTeam, //de base à 0 et implémenté de 1 pour chaque nouvelles teams
-        TeamName: newTeam //valeur de l'input
+        TeamName: newTeam, //valeur de l'input
+        score: 0,
       }
       if(newTeam !== ''){//si la valeur de l'input n'est pas vide
         for (const element of team) {

@@ -33,7 +33,7 @@ export function QuizzScreen({ navigation }) {
           { team.map(team => {
             return (
               <View key={team.id}>
-                <Text>{team.TeamName}</Text>
+                <Text>{team.TeamName} : {team.score}</Text>
               </View>
             )
           }) }
