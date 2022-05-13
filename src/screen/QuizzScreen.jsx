@@ -18,6 +18,7 @@ export function QuizzScreen({ navigation }) {
           <Text style={styles.ViewTimerText}>Timer</Text>
         </View>
         <View style={styles.ViewTeamScore}>
+          <View style={styles.ViewTeamScoreWrap}>
             { team.map(team => {
               return (
                 <View style={styles.ViewTeamScoreCard} key={team.id}>
@@ -26,8 +27,10 @@ export function QuizzScreen({ navigation }) {
                 </View>
               )
             }) }
+          </View>
         </View>
         <View style={styles.ViewTheme}>
+          <View style={styles.ViewThemeWrap}>
             <Pressable style={styles.ThemeCard} onPress={() => questionNavigate('ring')}>
               <Text style={styles.ThemeCardText}>1</Text>
             </Pressable>
@@ -40,10 +43,11 @@ export function QuizzScreen({ navigation }) {
             <Pressable style={styles.ThemeCard} onPress={() => questionNavigate('replay')}>
               <Text style={styles.ThemeCardText}>4</Text>
             </Pressable>
-            <Pressable style={styles.ThemeCard} onPress={() =>questionNavigate()}>
+            <Pressable style={styles.ThemeCardBonus} onPress={() =>questionNavigate()}>
               <Text style={styles.ThemeCardText}>Bonus</Text>
             </Pressable>
           </View>
+        </View>
       </View>
     );
   }
@@ -53,21 +57,36 @@ export function QuizzScreen({ navigation }) {
       flex: 1, 
       alignItems: 'center', 
       justifyContent: 'center',
+      backgroundColor: '#132851',
     },
     ViewTimer: {
       width: '100%',
       height: '15%',
-      justifyContent: 'center',
-      alignItems: 'center',
-      paddingTop: 50,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'flex-end',
+      paddingBottom: 20,
+      paddingLeft: 20,
+      paddingRight: 20,
+    },
+    ViewTimerText: {
+      color: '#ffffff',
     },
     ViewTeamScore: {
       width: '100%',
       height: '35%',
       justifyContent: 'center',
       alignItems: 'center',
-      flexDirection: 'row',
     },
+      ViewTeamScoreWrap: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignContent: 'center',
+        flexDirection: 'column',
+        width: '100%',
+        height: '100%',
+        flexWrap: 'wrap',
+      },
       ViewTeamScoreCard: {
         width: '40%',
         height: '20%',
@@ -82,18 +101,32 @@ export function QuizzScreen({ navigation }) {
     ViewTheme: {
       width: '100%',
       height: '55%',
-      justifyContent: 'flex-start',
+      justifyContent: 'center',
       alignItems: 'center',
     },
+      ViewThemeWrap: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+      },
       ThemeCard: {
-        width: '80%',
-        height: '10%',
+        width: '25%',
+        aspectRatio: 1,
         justifyContent: 'center',
         alignItems: 'center',
         margin: 10,
-        backgroundColor: '#FF7F00',
+        backgroundColor: '#85ceff',
       },
       ThemeCardText: {
         color: '#ffffff',
+      },
+      ThemeCardBonus: {
+        width: '25%',
+        aspectRatio: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 10,
+        backgroundColor: 'grey',
       },
 })

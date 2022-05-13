@@ -15,7 +15,7 @@ export function StackNavigator() {
     return (
         <Stack.Navigator initialRouteName="Home">
             <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>
-            <Stack.Screen name="NewGame" component={NewGameScreen} />
+            <Stack.Screen name="NewGame" component={NewGameScreen} options={{headerTransparent: true, headerTitle: '', headerBackTitleVisible: false,}}/>
             <Stack.Screen name="Quizz" component={QuizzScreen}  options={{headerShown: false}}/>
             <Stack.Screen name="Question" component={QuestionScreen}  options={{headerShown: false}}/>
             <Stack.Screen name="Response" component={ResponseScreen}  options={{headerShown: false}}/>

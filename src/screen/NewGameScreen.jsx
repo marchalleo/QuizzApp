@@ -56,7 +56,7 @@ export function NewGameScreen({ navigation }) {
             <TextInput
               style={styles.inputTeam}
               placeholder="Nom de l'équipe"
-              placeholderTextColor="#000"
+              placeholderTextColor="#132851"
               value={newTeam}
               onChangeText={setNewTeam}
               required
@@ -92,7 +92,8 @@ export function NewGameScreen({ navigation }) {
       flex: 1, 
       flexDirection: 'column',
       alignItems: 'center', 
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      backgroundColor: '#132851',
     },
     ViewAddTeam: {
       flex: 1, 
@@ -100,70 +101,73 @@ export function NewGameScreen({ navigation }) {
       alignItems: 'center', 
       justifyContent: 'center',
       width: '100%',
-      height: '30%',
-    },
-    ViewInput: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'flex-end',
-      width: '70%',
       height: '40%',
+      paddingTop: 40,
     },
-    inputTeam: {
-      width: '100%',
-      height: '50%',
-      textAlign: 'center',
-      backgroundColor: '#98c1d9',
-    },
-    ViewInputButton: {
-      flex: 1,
-      alignItems: 'center',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      width: '70%',
-      height: '40%',
-    },
-    InpuButton: {
-      width: '45%',
-      height: '35%',
-      backgroundColor: 'white',
-      justifyContent: 'center',
-      backgroundColor: '#c7f0e3',
-    },
-    TextButton: {
-      fontSize: 16,
-      textAlign: 'center',
-    },
+      ViewInput: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        width: '70%',
+        height: '40%',
+      },
+      inputTeam: {
+        width: '100%',
+        height: '45%',
+        textAlign: 'center',
+        backgroundColor: '#ffffff',
+        color: '#132851',
+      },
+      ViewInputButton: {
+        flex: 1,
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '70%',
+        height: '40%',
+      },
+      InpuButton: {
+        width: '45%',
+        height: '35%',
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        backgroundColor: '#c7f0e3',
+      },
+      TextButton: {
+        fontSize: 16,
+        textAlign: 'center',
+      },
     ViewTeam: {
       width: '100%',
-      height: '70%',
+      height: '60%',
       alignItems: 'center',
-      borderTopWidth: 1,
-      borderTopColor: '#000000',
+      borderTopWidth: 2,
+      borderTopColor: '#ffffff',
       paddingTop: 30,
       paddingBottom: 30,
     },
-    teamCard: {
-      width: '70%',
-      height: '10%',
-      backgroundColor: '#FF7F00',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      flexDirection: 'row',
-      margin: 5,
-      paddingLeft: 20,
-    },
-    teamCardText: {
-      fontSize: 22,
-    },
-    teamCardDelete: {
-      width: '20%',
-      height: '100%',
-      backgroundColor: 'red',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    teamCardDeleteText: {
-      fontSize: 25,
-    },
+      teamCard: {
+        width: '70%',
+        height: '10%',
+        backgroundColor: '#c7f0e3',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexDirection: 'row',
+        margin: 5,
+        paddingLeft: 20,
+      },
+      teamCardText: {
+        fontSize: 22,
+        color: '#132851',
+      },
+      teamCardDelete: {
+        width: '20%',
+        height: '100%',
+        backgroundColor: '#ffffff',
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      teamCardDeleteText: {
+        fontSize: 25,
+      },
   });

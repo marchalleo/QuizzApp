@@ -15,9 +15,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#132851',
   },
   button: {
-    backgroundColor: '#98c1d9',
+    backgroundColor: '#c7f0e3',
     paddingTop: 15,
     paddingBottom: 15,
     paddingLeft: 20,
@@ -26,6 +27,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 25,
-    color: '#ffffff',
+    color: '#132851',
   },
 });
